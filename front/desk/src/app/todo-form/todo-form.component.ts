@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { Todo } from 'src/todo';
 
 @Component({
   selector: 'app-todo-form',
@@ -13,7 +15,8 @@ export class TodoFormComponent implements OnInit {
   todoForm = this.formBuilder.group({
     todo: ['']
   })
-  constructor(private formBuilder: FormBuilder, private dataService: DataService, private location: Location) { }
+
+  constructor(private formBuilder: FormBuilder, private dataService: DataService, private location: Location, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -26,4 +29,5 @@ export class TodoFormComponent implements OnInit {
         this.location.back();
       })
   }
+
 }

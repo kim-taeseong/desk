@@ -31,8 +31,22 @@ export class DataService {
       );
   }
 
+  getTodo(id: number): Observable<Todo> {
+    return this.http.get<Todo>(`${this.url}/todos/${id}`)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+  
   postTodo(todo: any): Observable<Todo> {
     return this.http.post<Todo>(`${this.url}/todos/`, todo)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
+  updateTodo(todo: any, id: number): Observable<Todo> {
+    return this.http.put<Todo>(`${this.url}/todos/${id}`, todo)
       .pipe(
         catchError(this.handleError)
       )
