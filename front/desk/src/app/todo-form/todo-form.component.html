@@ -1,0 +1,6 @@
+<p>todo-form works!</p>
+<form [formGroup]="todoForm" (ngSubmit)="postTodo()">
+    <label for="todo">Todo :: </label>
+    <input id="todo" type="text" formControlName="todo">
+    <button type="submit">등록</button>
+</form>

@@ -1,1 +1,9 @@
 <p>{{ title }}</p>
+<nav>
+    <ul>
+        <li><a routerLink="todos" routerLinkActive="active">할 일</a></li>
+        <li><a routerLink="todo-form" routerLinkActive="active">할 일 추가</a></li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>
