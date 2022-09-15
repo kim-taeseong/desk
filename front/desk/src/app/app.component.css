@@ -1,0 +1,11 @@
+p {
+    font-size: xx-large;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}

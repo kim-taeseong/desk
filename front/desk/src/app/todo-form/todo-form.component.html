@@ -1,6 +1,7 @@
-<p>todo-form works!</p>
-<form [formGroup]="todoForm" (ngSubmit)="postTodo()">
-    <label for="todo">Todo :: </label>
-    <input id="todo" type="text" formControlName="todo">
-    <button type="submit">등록</button>
+<form class="form" [formGroup]="todoForm" (ngSubmit)="postTodo()">
+    <mat-form-field appearance="fill">    
+        <mat-label for="todo">Todo :: </mat-label>
+        <input matInput id="todo" type="text" formControlName="todo">
+    </mat-form-field><br>
+    <button mat-raised-button color="primary" type="submit">등록</button>
 </form>

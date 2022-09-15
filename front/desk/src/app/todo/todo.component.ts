@@ -4,6 +4,9 @@ import { FormBuilder } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Todo } from 'src/todo';
 import { Location } from '@angular/common';
+import { NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
+import { TabsComponent } from '../tabs/tabs.component';
 
 @Component({
   selector: 'app-todo',
@@ -17,7 +20,7 @@ export class TodoComponent implements OnInit {
     todo: ['']
   })
 
-  constructor(private router: ActivatedRoute, private dataService: DataService, private formBuilder: FormBuilder, private location: Location) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService, private formBuilder: FormBuilder, private location: Location, private router:  Router, private tabs: TabsComponent) { }
 
   ngOnInit(): void {
     this.getTodo();
@@ -25,7 +28,7 @@ export class TodoComponent implements OnInit {
   
   getTodo() {
     // if id
-    const id = Number(this.router.snapshot.paramMap.get('id'))
+    const id = Number(this.route.snapshot.paramMap.get('id'))
     this.dataService.getTodo(id)
       .subscribe(todo => {
         this.todo = todo;
@@ -35,11 +38,22 @@ export class TodoComponent implements OnInit {
   }
 
   updateTodo() {
-    const id = Number(this.router.snapshot.paramMap.get('id'))
+    const id = Number(this.route.snapshot.paramMap.get('id'))
     this.dataService.updateTodo(this.todoForm.value, id)
       .subscribe(todo => {
         console.log(todo);
-        this.location.back();
+        this.router.navigateByUrl('/');
+        this.tabs.activeItem = this.tabs.list[0]
+      })
+  }
+
+  deleteTodo() {
+    const id = Number(this.route.snapshot.paramMap.get('id'))
+    this.dataService.deleteTodo(id)
+      .subscribe(todo => {
+        console.log(todo);
+        this.router.navigateByUrl('/');
+        this.tabs.activeItem = this.tabs.list[0]
       })
   }
 }

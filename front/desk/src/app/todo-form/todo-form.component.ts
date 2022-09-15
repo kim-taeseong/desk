@@ -4,6 +4,8 @@ import { DataService } from '../data.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Todo } from 'src/todo';
+import { Router } from '@angular/router';
+import { TabsComponent } from '../tabs/tabs.component';
 
 @Component({
   selector: 'app-todo-form',
@@ -16,7 +18,7 @@ export class TodoFormComponent implements OnInit {
     todo: ['']
   })
 
-  constructor(private formBuilder: FormBuilder, private dataService: DataService, private location: Location, private router: ActivatedRoute) { }
+  constructor(private formBuilder: FormBuilder, private dataService: DataService, private location: Location, private route: ActivatedRoute, private router: Router, private tabs: TabsComponent) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +28,8 @@ export class TodoFormComponent implements OnInit {
     this.dataService.postTodo(this.todoForm.value)
       .subscribe(todo => {
         console.log(todo);
-        this.location.back();
+        this.router.navigateByUrl('/');
+        this.tabs.activeItem = this.tabs.list[0]
       })
   }
 

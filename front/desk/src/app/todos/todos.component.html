@@ -1,5 +1,10 @@
-<p>todos works!</p>
 
-<div *ngFor="let todo of todos">
-    <a routerLink="/todos/{{todo.id}}">{{ todo.todo }} / {{ todo.done }} / {{ todo.day }}</a>
-</div>
+<mat-list class="todos" *ngFor="let todo of todos">
+    <mat-list-item class="todo">
+        <a routerLink="/todos/{{todo.id}}">
+            <mat-card>
+                {{ todo.todo }} / {{ todo.day }}
+            </mat-card>
+        </a>
+        </mat-list-item>
+</mat-list>

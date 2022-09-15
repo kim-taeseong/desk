@@ -1,0 +1,16 @@
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
+.todos {
+    display: inline-block;
+    align-items: center;
+}
+
+.todo {
+    margin: 7px 0px;
+}

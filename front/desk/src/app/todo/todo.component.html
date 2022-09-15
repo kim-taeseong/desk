@@ -1,6 +1,8 @@
-<p>todo works!</p>
 <form [formGroup]="todoForm" (ngSubmit)="updateTodo()">
-    <label for="todo">Todo:: </label>
-    <input id="todo" type="text" formControlName="todo">
-    <button type="submit">변경</button>
+    <mat-form-field appearance="fill">
+        <mat-label for="todo">Todo:: </mat-label>
+        <input matInput id="todo" type="text" formControlName="todo">
+    </mat-form-field><br>
+    <button mat-raised-button color="primary" type="submit">변경</button>
+    <button mat-raised-button color="warn" type="button" (click)="deleteTodo()">삭제</button>
 </form>
